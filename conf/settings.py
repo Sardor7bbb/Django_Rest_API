@@ -44,7 +44,8 @@ INSTALLED_APPS = [
 
     # My apps
     'books',
-
+    'authors',
+    'users',
 ]
 
 MIDDLEWARE = [

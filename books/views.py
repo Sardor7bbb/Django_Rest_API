@@ -4,14 +4,20 @@ from rest_framework.response import Response
 
 from books.models import BookModel
 from books.serializers import BookSerializer
+from rest_framework import generics
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
+"""@api_view(['GET', 'PUT', 'DELETE'])
 def get_all_books(request, *args, **kwargs):
     books = BookModel.objects.all()
     data = BookSerializer(books, many=True).data
     return Response(data)
+"""
 
+
+class BookListAPIView(generics.ListAPIView):
+    queryset = BookModel.objects.all()
+    serializer_class = BookSerializer
 
 @api_view(['GET'])
 def get_book(request, pk, *args, **kwargs):
